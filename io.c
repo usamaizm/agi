@@ -1,5 +1,4 @@
-// io.c
-
+```c
 #include "io.h"  // Include the header file for the I/O module
 
 Module init_io_module() {
@@ -7,5 +6,7 @@ Module init_io_module() {
     // This function should return a Module object initialized with I/O capabilities
     Module io_module;
     // Initialize I/O capabilities here
+    // Add any necessary initialization logic for the I/O module
     return io_module;
 }
+```
