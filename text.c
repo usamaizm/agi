@@ -1,6 +1,6 @@
-// text.c
-
-#include "text.h"  // Include the header file for the text module
+#include <stdio.h>  // Include standard I/O library for logging (optional)
+#include <stdlib.h>  // Include standard library for memory allocation (optional)
+#include "text.h"
 
 Module init_text_module() {
     // Initialization logic for the text module
