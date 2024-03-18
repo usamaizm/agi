@@ -1,7 +1,5 @@
-```c
-// vision.c
-
-#include "vision.h"  // Include the header file for the vision module
+#include "module.h"
+#include "vision.h"
 
 typedef struct {
     int height;
@@ -15,9 +13,10 @@ void config_vision(ConfiguredVision *output) {
 
 Module init_vision_module() {
     Module vision_module;
+    vision_module.type = "Vision";
+    vision_module.functions = NULL;  // Placeholder for vision-specific functions
     vision_module.vision = malloc(sizeof(ConfiguredVision));
     config_vision((ConfiguredVision *) vision_module.vision);
 
     return vision_module;
 }
-```
