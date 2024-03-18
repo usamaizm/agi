@@ -1,5 +1,3 @@
-// output.c
-
 #include <stdio.h>  // Include standard I/O library for input/output (optional)
 #include <stdlib.h>  // Include standard library for memory allocation (optional)
 #include "output.h"
