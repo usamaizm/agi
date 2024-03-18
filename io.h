@@ -1,9 +1,13 @@
-// io.h
+```c
 #ifndef IO_H
 #define IO_H
 
+// Declaration of the I/O module initialization function
+Module init_io_module();
+
 #include "module.h"  // Include necessary headers
 
-Module init_io_module();  // Declaration of the I/O module initialization function
+// Add more I/O-related function prototypes as needed
 
 #endif  // IO_H
+```
