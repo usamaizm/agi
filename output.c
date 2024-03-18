@@ -1,24 +1,22 @@
-#include <stdio.h>  // Include standard I/O library for input/output (optional)
-#include <stdlib.h>  // Include standard library for memory allocation (optional)
 #include "output.h"
 
-Module init_output_module() {
+Module* initOutputModule() {
     // Allocate memory for the output module
-    Module output_module = malloc(sizeof(struct Module));
+    Module* outputModule = malloc(sizeof(Module));
 
-    // Initialize any data structures or variables specific to the output module if needed
+    // Initialize module ID and name
+    outputModule->OUTPUT_MODULE_ID = 1;
+    snprintf(outputModule->name, sizeof(outputModule->name), "Output Module");
 
-    return output_module;
+    return outputModule;
 }
 
-void display_output(Module output_module) {
-    // For demonstration purposes, we'll just print a message
-    // In a real implementation, this function would display output
-
-    printf("Displaying output.\n");
+void displayOutput(const Module* outputModule) {
+    // Improved formatting string to handle longer module names and display name length
+    printf("Displaying output for module ID: %d, Name: %s (%zu bytes)\n",
+           outputModule->OUTPUT_MODULE_ID, outputModule->name, strlen(outputModule->name));
 }
 
-void free_output_module(Module output_module) {
-    // Free memory allocated for the output module
-    free(output_module);
+void freeOutputModule(Module* outputModule) {
+    free(outputModule); // Free allocated memory for the output module
 }
