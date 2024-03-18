@@ -1,8 +1,4 @@
-// module.c
-
-#include <stdio.h>  // Include standard I/O library for logging (optional)
-#include <stdlib.h>  // Include standard library for memory allocation (optional)
-#include "module.h"
+#include "module.h"  // Include the header file for the generic module
 
 Module init_module() {
     // Allocate memory for the module
