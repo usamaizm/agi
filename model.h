@@ -1,4 +1,3 @@
-```c
 #ifndef MODEL_H
 #define MODEL_H
 
@@ -7,8 +6,8 @@
 
 // Define the Model structure with its members
 typedef struct {
-    const char* name;
-    ReasoningModule* reasoning_module;
+    const char* name;  // Name of the model
+    ReasoningModule* reasoning_module;  // Pointer to the reasoning module
 } Model;
 
 // Declare function prototypes for the Model (init_model(), destroy_model, and any additional functions as needed)
@@ -16,4 +15,3 @@ void init_model(Model** model_ptr);
 void destroy_model(Model* model);
 
 #endif // MODEL_H
-```
