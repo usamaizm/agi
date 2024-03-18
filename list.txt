@@ -6,8 +6,8 @@ input.c
 input.h
 io.c
 io.h
-knowledge_graph.c
-knowledge_graph.h
+knowledgegraph.c
+knowledgegraph.h
 language.c
 language.h
 list.txt
