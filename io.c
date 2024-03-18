@@ -1,23 +1,16 @@
-#include <stdio.h>  // Include standard I/O library for input/output (optional)
-#include <stdlib.h>  // Include standard library for memory allocation (optional)
-#include "io.h"
+#ifndef IO_MODULE_H_
+#define IO_MODULE_H_
 
+#include "module.h" // Include the header file for the generic module
+
+// Define the configuration structure for I/O module
 typedef struct {
-    int io_type;
-    const char* description;
+    int io_type;          // Type of I/O (e.g., console, file, etc.)
+    const char* description;   // Description of the I/O device
 } IOConfig;
 
-void configure_io(IOConfig *output) {
-    output->io_type = 1;  // Default I/O type (example value)
-    output->description = "Console";  // Default I/O description
-}
+// Add a blank line for readability
+// Declaration of the initialization function for I/O module
+Module init_io_module();
 
-Module init_io_module() {
-    Module io_module;
-    io_module.type = "I/O";
-    io_module.functions = NULL;  // Placeholder for I/O-specific functions
-    io_module.io = malloc(sizeof(IOConfig));
-    configure_io((IOConfig *) io_module.io);
-
-    return io_module;
-}
+#endif // IO_MODULE_H_
