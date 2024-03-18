@@ -1,10 +1,7 @@
 ```c
-#include <stdio.h>  // Include standard I/O library for logging (optional)
-#include <stdlib.h>  // Include standard library for dynamic memory allocation
-#include <string.h>  // Include string library for string operations
-#include "knowledge_graph.h"
+#include "knowledgegraph.h"
 
-KnowledgeGraph init_knowledge_graph() {
+KnowledgeGraph init_knowledgegraph() {
     // Allocate memory for the knowledge graph
     KnowledgeGraph kg = malloc(sizeof(struct KnowledgeGraph));
 
