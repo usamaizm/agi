@@ -1,19 +1,15 @@
-```c
 #ifndef INPUT_H
 #define INPUT_H
 
-// Define the InputModule structure
+#include "module.h"  // Include the header file for the generic module
+
+// Define the InputConfig structure
 typedef struct {
-    // Define input module-specific data structures or variables if needed
-} InputModule;
+    int input_type;  // Type of input (e.g., keyboard, mouse, etc.)
+    const char* description;  // Description of the input device
+} InputConfig;
 
 // Declaration of the input module initialization function
 Module init_input_module();
 
-// Declaration of function to get user input
-void get_user_input(Module input_module);
-
-// Add more input-related function prototypes as needed
-
 #endif  // INPUT_H
-```
