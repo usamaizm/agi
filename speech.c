@@ -2,22 +2,31 @@
 #include <stdlib.h>  // Include standard library for memory allocation (optional)
 #include "speech.h"
 
-Module init_speech_module() {
+// Function to initialize a new instance of the speech module
+Module* init_speech_module() {
     // Allocate memory for the speech module
-    Module speech_module = malloc(sizeof(struct Module));
+    Module* speech_module = malloc(sizeof(Module));
+    if (speech_module == NULL) {
+        perror("Memory allocation failed");
+        exit(EXIT_FAILURE);
+    }
 
     // Initialize any data structures or variables specific to the speech module if needed
+    // For example:
+    // speech_module->voice = "DefaultVoice";
 
     return speech_module;
 }
 
-void process_speech(Module speech_module, const char* input) {
-    // For demonstration purposes, we'll just print the processed speech
+// Function to process input speech
+void process_speech(const char* input) {
+    // Placeholder for actual speech processing logic
     // In a real implementation, this function would process the input speech
-    printf("Processing speech: %s\n", input);
+    printf("Speech processed: %s\n", input);
 }
 
-void free_speech_module(Module speech_module) {
+// Function to free memory allocated for the speech module
+void free_speech_module(Module* speech_module) {
     // Free memory allocated for the speech module
     free(speech_module);
 }
