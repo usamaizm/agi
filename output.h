@@ -1,20 +1,18 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
-#include "module.h"  // Include the header file for the generic module
+#include <stdio.h>
+#include <stdlib.h>
 
-// Define the OutputModule structure
+// Define the Module structure
 typedef struct {
-    // Define output module-specific data structures or variables if needed
-} OutputModule;
+    int OUTPUT_MODULE_ID; // Unique identifier for the output module
+    char name[100]; // Increased buffer size to handle longer names
+} Module;
 
-// Declaration of the output module initialization function
-Module init_output_module();
+// Declare functions related to the output module
+Module* initOutputModule();
+void displayOutput(const Module* outputModule);
+void freeOutputModule(Module* outputModule);
 
-// Declaration of function to display output
-void display_output(Module output_module);
-
-// Declaration of function to free memory for the output module
-void free_output_module(Module output_module);
-
-#endif  // OUTPUT_H
+#endif // OUTPUT_H
