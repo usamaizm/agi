@@ -6,7 +6,7 @@
 #include "audio.h"
 #include "io.h"
 #include "reasoning.h"
-#include "knowledge_graph.h"
+#include "knowledge.h" // Updated header name
 
 // Define the AGI structure
 typedef struct {
@@ -15,7 +15,7 @@ typedef struct {
     Module audio;
     Module io;
     Module reasoning;
-    KnowledgeGraph kg;
+    Knowledge kg; // Updated member name
 } AGI;
 
 // Function prototypes for AGI system initialization and execution
