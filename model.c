@@ -2,12 +2,18 @@
 #include <stdlib.h>  // Include standard library for memory allocation (optional)
 #include "model.h"
 #include "reasoning.h"  // Include reasoning module header file
-#include "data_structures.h"  // Include other necessary header files
+#include "data.h"  // Include the correct header file "data.h"
 
 // Define any global variables or constants if needed
 
+// Define the Model structure to represent a model
+typedef struct {
+    const char* name;  // Name of the model
+    ReasoningModule* reasoning_module;  // Pointer to the reasoning module
+} Model;
+
+// Initialize a model by allocating memory and setting default values
 void init_model(Model** model_ptr) {
-    // Allocate memory for the Model structure and initialize its members
     *model_ptr = malloc(sizeof(Model));
     Model* model = *model_ptr;
 
@@ -17,6 +23,7 @@ void init_model(Model** model_ptr) {
     // Initialize any internal data structures or variables if needed
 }
 
+// Destroy a model and free allocated memory
 void destroy_model(Model* model) {
     free_reasoning_module(model->reasoning_module);
     free(model);
