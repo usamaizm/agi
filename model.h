@@ -1,14 +1,12 @@
-```C
-// model.h
-
+```c
 #ifndef MODEL_H
 #define MODEL_H
 
-#include "reasoning.h" // Include reasoning module header file
-#include <stddef.h> // For size_t and NULL (optional)
+#include "reasoning.h"  // Include reasoning module header file
+#include <stddef.h>  // For size_t and NULL (optional)
 
 // Define the Model structure with its members
-typedef struct Model {
+typedef struct {
     const char* name;
     ReasoningModule* reasoning_module;
 } Model;
