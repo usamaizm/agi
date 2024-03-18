@@ -7,7 +7,7 @@
 typedef struct {
     const char* language_type;  // Type of language (e.g., English, Spanish, etc.)
     int version;  // Version of the language
-} LanguageConfig;
+} LanguageConfig;  // Represents configuration for the language module
 
 // Declaration of the language module initialization function
 Module init_language_module();
