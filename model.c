@@ -1,10 +1,8 @@
-```C
-// model.c
-
-#include "model.h"  // Include header file to access function declarations
-#include <stdlib.h> // For malloc() and free() functions (optional)
-#include "reasoning.h"
-#include "data_structures.h" // Or any other required header files
+#include <stdio.h>  // Include standard I/O library for logging (optional)
+#include <stdlib.h>  // Include standard library for memory allocation (optional)
+#include "model.h"
+#include "reasoning.h"  // Include reasoning module header file
+#include "data_structures.h"  // Include other necessary header files
 
 // Define any global variables or constants if needed
 
@@ -25,4 +23,3 @@ void destroy_model(Model* model) {
 }
 
 // Implement any additional functions required by the AGI framework for your Model
-```
