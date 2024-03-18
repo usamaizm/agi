@@ -1,5 +1,3 @@
-// agi.h
-
 #ifndef AGI_H
 #define AGI_H
 
@@ -11,17 +9,17 @@
 #include "knowledge_graph.h"
 
 // Define the AGI structure
-typedef struct agi {
+typedef struct {
     Module language;
     Module vision;
     Module audio;
     Module io;
     Module reasoning;
     KnowledgeGraph kg;
-} agi;
+} AGI;
 
 // Function prototypes for AGI system initialization and execution
-agi init_agi();
-void run_agi(agi agi);
+AGI init_agi();
+void run_agi(AGI agi);
 
 #endif  // AGI_H
