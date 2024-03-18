@@ -15,9 +15,10 @@ typedef struct {
     int nodes;  // Number of nodes in the knowledge graph
     int edges;  // Number of edges in the knowledge graph
     KnowledgeConfig* config;  // Configuration for the knowledge graph
-} Knowledge;
+} Knowledge;  // Represents a knowledge graph with its configuration
 
 // Declaration of the knowledge initialization function
+// This function initializes the knowledge graph and returns a Knowledge struct
 Knowledge init_knowledge();
 
 // Declaration of function to store knowledge in the knowledge graph
