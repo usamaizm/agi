@@ -10,6 +10,7 @@ typedef struct {
 } IOConfig;
 
 // Declaration of the I/O module initialization function
+// This function initializes the I/O module and returns a Module struct
 Module init_io_module();
 
 #endif  // IO_H
