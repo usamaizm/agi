@@ -1,21 +1,4 @@
-// agi.c
-
-#include "language.h"
-#include "vision.h"
-#include "audio.h"
-#include "io.h"
-#include "reasoning.h"
-#include "knowledge_graph.h"
-
-// Define the AGI structure
-typedef struct agi {
-    Module language;
-    Module vision;
-    Module audio;
-    Module io;
-    Module reasoning;
-    KnowledgeGraph kg;
-} agi;
+#include "agi.h"
 
 // Initialize the AGI structure
 agi init_agi() {
@@ -25,7 +8,7 @@ agi init_agi() {
     agi.audio = init_audio_module();
     agi.io = init_io_module();
     agi.reasoning = init_reasoning_module();
-    agi.kg = init_knowledge_graph();
+    agi.kg = init_knowledgegraph();
     return agi;
 }
 
