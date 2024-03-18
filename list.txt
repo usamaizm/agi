@@ -11,12 +11,16 @@ knowledge_graph.h
 language.c
 language.h
 list.txt
+model.c
+model.h
 module.c
 module.h
 output.c
 output.h
 reasoning.c
 reasoning.h
+speech.c
+speech.h
 text.c
 text.h
 vision.c
