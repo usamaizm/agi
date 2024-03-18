@@ -1,6 +1,9 @@
 #ifndef REASONING_H
 #define REASONING_H
 
+#include <stddef.h>  // Include standard library for size_t (optional)
+#include "module.h"  // Include the header file for the generic module (if needed)
+
 // Define the ReasoningModule structure
 typedef struct {
     void* context;  // Context of the current execution environment (optional)
@@ -8,12 +11,15 @@ typedef struct {
 } ReasoningModule;
 
 // Declaration of the reasoning module initialization function
-Module init_reasoning_module();
+// Returns a pointer to a newly initialized ReasoningModule
+ReasoningModule* init_reasoning_module();
 
 // Declaration of function to execute reasoning tasks
-void execute_reasoning_tasks(Module reasoning_module);
+// Takes a pointer to a ReasoningModule as input
+void execute_reasoning_tasks(ReasoningModule* reasoning_module);
 
 // Declaration of function to free memory for the reasoning module
-void free_reasoning_module(Module reasoning_module);
+// Takes a pointer to a ReasoningModule as input
+void free_reasoning_module(ReasoningModule* reasoning_module);
 
 #endif // REASONING_H
