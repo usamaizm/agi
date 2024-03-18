@@ -1,4 +1,5 @@
-#include "module.h"
+#include <stdio.h>  // Include standard I/O library for logging (optional)
+#include <stdlib.h>  // Include standard library for memory allocation (optional)
 #include "vision.h"
 
 typedef struct {
@@ -13,8 +14,6 @@ void config_vision(ConfiguredVision *output) {
 
 Module init_vision_module() {
     Module vision_module;
-    vision_module.type = "Vision";
-    vision_module.functions = NULL;  // Placeholder for vision-specific functions
     vision_module.vision = malloc(sizeof(ConfiguredVision));
     config_vision((ConfiguredVision *) vision_module.vision);
 
