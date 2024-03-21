@@ -4,6 +4,8 @@ audio.c
 audio.h
 balance.c
 balance.h
+cache.c
+cache.h
 communication.c
 communication.h
 data.c
