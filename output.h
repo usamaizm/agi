@@ -1,18 +1,9 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
-#include <stdio.h>
-#include <stdlib.h>
+void output_init(void);               // optional setup
+void output_print(const char* text);  // main output function (console for now)
+void output_log(const char* text);    // to file or persistent log
+void output_cleanup(void);
 
-// Define the Module structure
-typedef struct {
-    int OUTPUT_MODULE_ID; // Unique identifier for the output module
-    char name[100]; // Increased buffer size to handle longer names
-} Module;
-
-// Declare functions related to the output module
-Module* initOutputModule();
-void displayOutput(const Module* outputModule);
-void freeOutputModule(Module* outputModule);
-
-#endif // OUTPUT_H
+#endif
