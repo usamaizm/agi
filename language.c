@@ -1,39 +1,32 @@
-#include <stdio.h>  // Include standard I/O library for logging (optional)
-#include <stdlib.h>  // Include standard library for memory allocation (optional)
 #include "language.h"
+#include "knowledge_graph.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-// Define the LanguageConfig structure
-typedef struct {
-    const char* language_type;  // Type of the language (e.g., English, Spanish)
-    int version;  // Version number of the language
-} LanguageConfig;  // Represents configuration for the language module
+int language_parse(const char* input) {
+    if (!input || strlen(input) == 0) return -1;
 
-// Function to configure the language module
-void configure_language(LanguageConfig* output) {
-    output->language_type = "English";  // Default language type
-    output->version = 1;  // Default language version
-}
+    int added = 0;
 
-// Function to initialize the language module
-Module init_language_module() {
-    Module language_module;
-    language_module.type = "Language";
-    language_module.functions = NULL;  // Placeholder for language-specific functions
-    language_module.language = malloc(sizeof(LanguageConfig));
-    configure_language((LanguageConfig*)language_module.language);
+    // Very crude parsing examples (expand with more rules later)
+    if (strstr(input, "Generate next") || strstr(input, "hypothesis")) {
+        kg_add("self", "task", "generate_hypothesis");
+        kg_add("meta", "phase", "exploration");
+        added += 2;
+    } else if (strstr(input, "reflect") || strstr(input, "score")) {
+        kg_add("self", "task", "self_reflect");
+        added++;
+    } else {
+        // Generic fallback: store raw as observation
+        char buf[256];
+        snprintf(buf, sizeof(buf), "raw_input_%zu", time(NULL));
+        kg_add("input", buf, input);
+        added++;
+    }
 
-    return language_module;
-}
+    // Could add more: entity extraction, relation guessing, etc.
+    // For now: keep it simple so it compiles and adds something useful
 
-// Function to execute language tasks
-void execute_language_tasks(Module language_module) {
-    // For demonstration purposes, we'll just print a message
-    // In a real implementation, this function would execute language processing tasks
-    printf("Executing language processing tasks.\n");
-}
-
-// Function to free memory allocated for the language module
-void free_language_module(Module language_module) {
-    // Free memory allocated for the language module
-    free(language_module.language);
+    return added;
 }
