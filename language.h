@@ -1,21 +1,15 @@
 #ifndef LANGUAGE_H
 #define LANGUAGE_H
 
-#include "module.h"  // Include the header file for the generic module
+#include <stdbool.h>
+#include <stddef.h>
 
-// Define the LanguageConfig structure
-typedef struct {
-    const char* language_type;  // Type of language (e.g., English, Spanish, etc.)
-    int version;  // Version of the language
-} LanguageConfig;  // Represents configuration for the language module
+/**
+ * Parse natural or synthetic text input into knowledge graph facts.
+ * - input: text string (e.g. "Generate next hypothesis" or user input)
+ * - Adds parsed triples directly to KG (via kg_add calls)
+ * - Returns number of facts added, or -1 on error
+ */
+int language_parse(const char* input);
 
-// Declaration of the language module initialization function
-Module init_language_module();
-
-// Declaration of function to execute language processing tasks
-void execute_language_tasks(Module language_module);
-
-// Declaration of function to free memory for the language module
-void free_language_module(Module language_module);
-
-#endif // LANGUAGE_H
+#endif
