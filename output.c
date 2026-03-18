@@ -1,22 +1,32 @@
 #include "output.h"
+#include <stdio.h>
 
-Module* initOutputModule() {
-    // Allocate memory for the output module
-    Module* outputModule = malloc(sizeof(Module));
+static FILE* log_file = NULL;
 
-    // Initialize module ID and name
-    outputModule->OUTPUT_MODULE_ID = 1;
-    snprintf(outputModule->name, sizeof(outputModule->name), "Output Module");
-
-    return outputModule;
+void output_init(void) {
+    log_file = fopen("agi_log.txt", "a");
+    if (!log_file) {
+        fprintf(stderr, "Failed to open log file\n");
+    }
 }
 
-void displayOutput(const Module* outputModule) {
-    // Improved formatting string to handle longer module names and display name length
-    printf("Displaying output for module ID: %d, Name: %s (%zu bytes)\n",
-           outputModule->OUTPUT_MODULE_ID, outputModule->name, strlen(outputModule->name));
+void output_print(const char* text) {
+    if (text) {
+        printf("%s\n", text);
+        fflush(stdout);
+    }
 }
 
-void freeOutputModule(Module* outputModule) {
-    free(outputModule); // Free allocated memory for the output module
+void output_log(const char* text) {
+    if (log_file && text) {
+        fprintf(log_file, "%s\n", text);
+        fflush(log_file);
+    }
+}
+
+void output_cleanup(void) {
+    if (log_file) {
+        fclose(log_file);
+        log_file = NULL;
+    }
 }
