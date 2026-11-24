@@ -71,7 +71,11 @@ int main(int argc, char **argv) {
         else (void)kg_add("meta", "reinforce", derived);
 
         free(derived);
-        kg_save(state_file);
+        if (kg_save(state_file) != 0) {
+            fprintf(stderr, "Unable to save knowledge graph state to %s\\n", state_file);
+            status = 1;
+            break;
+        }
     }
 
     printf("Run complete after %zu steps\n", step);
