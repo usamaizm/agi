@@ -4,20 +4,31 @@ An experimental software project exploring components that may contribute to an 
 
 ## Status
 
-**Early-stage research and implementation.** The repository contains a C-oriented codebase with modules for input/output, language, knowledge representation, reasoning, vision, audio, speech, data, and application orchestration. The presence of a module does not by itself imply production readiness or human-level general intelligence.
+**Early-stage research and implementation.** The supported build is currently a small C prototype that stores simple subject-predicate-object triples and runs a basic reasoning step over recorded input. It is not an artificial general intelligence system.
 
-## Repository map
+The repository contains additional experiments for input/output, language, knowledge representation, reasoning, vision, audio, speech, data, and module orchestration. The presence of a source file does not imply that it is part of the supported build or is production-ready.
 
-- `main.c`, `main.h` — application entry point and coordination
-- `agi.*`, `ai.*` — top-level interfaces
-- `reasoning.*`, `knowledge.*`, `knowledge_graph.*` — reasoning and knowledge experiments
-- `language.*`, `text.*` — language and text handling
-- `vision.*`, `audio.*`, `speech.*`, `speech2text.*`, `text2speech.*` — perception and speech-related modules
-- `input.*`, `output.*`, `io.*` — interaction and I/O
-- `data.*`, `model.*`, `module.*` — data, model, and module infrastructure
-- `cmake/`, `make/`, `src/`, `source/`, `lib/`, `libraries/` — build and implementation support
+## Build and test
 
-This map is descriptive; interfaces and implementation status must be confirmed against source and tests.
+Requires a C compiler and Make.
+
+```sh
+make
+make test
+./agi
+make clean
+```
+
+The executable runs a bounded demonstration and writes its simple knowledge-graph state to state.kb. Pass a different state-file path as the first argument to use another file.
+
+## Supported prototype components
+
+- main.c — bounded application loop.
+- knowledge_graph.c / knowledge_graph.h — in-memory triples with tab-delimited persistence.
+- reasoning.c / reasoning.h — basic text reflection over the knowledge graph.
+- tests/test_knowledge_graph.c — knowledge-graph and persistence tests.
+
+Other modules remain experiments until they have documented interfaces, explicit ownership/lifecycle rules, tests, and inclusion in the supported build.
 
 ## Development principles
 
@@ -27,19 +38,14 @@ This map is descriptive; interfaces and implementation status must be confirmed 
 4. Document dependencies, build steps, platform support, and known limitations.
 5. Keep data handling, model execution, and external-device access explicit and reviewable.
 
-## Getting started
-
-Build instructions are not yet documented consistently. Before publishing a release, establish one supported build path, list required dependencies, and add a clean-checkout build/test workflow. Do not assume that a successful compile proves an AGI capability.
-
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for proposed milestones.
 
+## Ecosystem
+
+See the [ecosystem integration contract](https://github.com/usamaizm/AIDB/blob/main/docs/ECOSYSTEM_INTEGRATION.md) for the role of AGI and the boundaries between the related projects.
+
 ## License
 
 See [LICENSE](LICENSE) for the repository's license and applicable notices.
-
-
-## Ecosystem integration
-
-This project is part of a set of independent, interoperable open projects. See the [ecosystem integration contract](https://github.com/usamaizm/AIDB/blob/main/docs/ECOSYSTEM_INTEGRATION.md) for its role, interoperability boundaries, and integration principles.
