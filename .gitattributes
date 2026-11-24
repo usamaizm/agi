@@ -1,0 +1,20 @@
+# Normalize text files across platforms.
+* text=auto eol=lf
+
+# Keep common binary assets untouched.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.bin binary
+*.o binary
+*.a binary
+*.so binary
+*.dll binary
+*.exe binary
