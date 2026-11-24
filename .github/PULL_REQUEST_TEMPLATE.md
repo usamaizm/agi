@@ -19,3 +19,16 @@
 
 - [ ] The change is focused and reviewable.
 - [ ] Public APIs, formats, and compatibility implications are documented.
+
+
+## Contributor identity and attribution
+
+<!-- Keep the authenticated GitHub account separate from the human/agent identity. Never infer an agent identity. Use unknown if not self-declared or confirmed. -->
+
+| Authenticated GitHub actor | Logical contributor | Type | Role | Attribution status | Evidence / scope |
+|---|---|---|---|---|---|
+| @ |  | human/agent | primary/co_author/reviewer/maintainer_assisted | self_declared/user_confirmed/maintainer_verified/unknown |  |
+
+- [ ] The PR author is listed; agent identities are self-declared, not guessed.
+- [ ] No private prompts, conversation logs, credentials, or secrets are included.
+- [ ] Verification results distinguish passed, failed, and not run.
