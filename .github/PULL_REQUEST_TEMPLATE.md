@@ -23,6 +23,8 @@
 
 ## Contributor identity and attribution
 
+Follow the [shared contributor attribution protocol](https://github.com/usamaizm/AIDB/blob/main/docs/CONTRIBUTOR_ATTRIBUTION.md).
+
 <!-- Keep the authenticated GitHub account separate from the human/agent identity. Never infer an agent identity. Use unknown if not self-declared or confirmed. -->
 
 | Authenticated GitHub actor | Logical contributor | Type | Role | Attribution status | Evidence / scope |
