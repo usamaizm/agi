@@ -37,6 +37,17 @@ int main(void) {
     value = kg_query("agent", "status", NULL);
     assert(value != NULL && strcmp(value, "ready") == 0);
     free(value);
+    char malformed_path[] = "/tmp/agi-kg-bad-XXXXXX";
+    int malformed_fd = mkstemp(malformed_path);
+    assert(malformed_fd >= 0);
+    FILE *malformed = fdopen(malformed_fd, "w");
+    assert(malformed != NULL);
+    assert(fputs("new\\tpredicate\\tvalue\\nmalformed\\n", malformed) >= 0);
+    assert(fclose(malformed) == 0);
+    assert(!kg_load(malformed_path));
+    assert(kg_query("new", NULL, NULL) == NULL);
+    assert(unlink(malformed_path) == 0);
+
     kg_cleanup();
     assert(unlink(state_path) == 0);
 
