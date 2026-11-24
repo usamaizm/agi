@@ -19,12 +19,12 @@ make test
 make clean
 ```
 
-The executable runs a bounded demonstration and writes its simple knowledge-graph state to state.kb. Pass a different state-file path as the first argument to use another file.
+The executable runs a bounded demonstration and writes its simple knowledge-graph state to state.kb. Pass a different state-file path as the first argument to use another file. Existing plain-TSV state files remain readable; new writes use the `# AGI-KG 1` escaped format so tabs, newlines, carriage returns, and backslashes in values round-trip safely. Missing state files initialize a new graph, while malformed or unreadable existing state files stop the run instead of being silently overwritten.
 
 ## Supported prototype components
 
 - main.c — bounded application loop.
-- knowledge_graph.c / knowledge_graph.h — in-memory triples with tab-delimited persistence.
+- knowledge_graph.c / knowledge_graph.h — in-memory triples with versioned escaped persistence, legacy plain-TSV loading, malformed-file rollback, and atomic replacement on save.
 - reasoning.c / reasoning.h — basic text reflection over the knowledge graph.
 - tests/test_knowledge_graph.c — knowledge-graph and persistence tests.
 
