@@ -134,15 +134,18 @@ bool kg_load(const char *filename) {
     return success;
 }
 
-void kg_save(const char *filename) {
-    if (!filename || !triples) return;
+int kg_save(const char *filename) {
+    if (!filename || !triples) return -1;
     FILE *file = fopen(filename, "w");
-    if (!file) return;
+    if (!file) return -1;
+    int success = 1;
     for (size_t i = 0; i < triple_count; ++i) {
         if (fprintf(file, "%s\t%s\t%s\n",
                     triples[i].subject, triples[i].predicate, triples[i].object) < 0) {
+            success = 0;
             break;
         }
     }
-    (void)fclose(file);
+    if (fclose(file) != 0) success = 0;
+    return success ? 0 : -1;
 }
