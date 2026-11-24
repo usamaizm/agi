@@ -54,3 +54,8 @@ See [LICENSE](LICENSE) for the repository's license and applicable notices.
 ## Contributor attribution
 
 Human and AI contributors must follow the [contributor identity and attribution protocol](CONTRIBUTOR_PROTOCOL.md). Keep the authenticated GitHub account separate from a contributor's self-declared identity; never guess who performed earlier work.
+
+
+## Contributor attribution
+
+Human and AI contributors should follow the [shared contributor attribution protocol](https://github.com/usamaizm/AIDB/blob/main/docs/CONTRIBUTOR_ATTRIBUTION.md). Keep the authenticated GitHub actor separate from a contributor's self-declared identity; never infer authorship from account metadata or commit style.
