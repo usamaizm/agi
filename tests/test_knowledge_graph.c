@@ -42,7 +42,7 @@ int main(void) {
     assert(malformed_fd >= 0);
     FILE *malformed = fdopen(malformed_fd, "w");
     assert(malformed != NULL);
-    assert(fputs("new\\tpredicate\\tvalue\\nmalformed\\n", malformed) >= 0);
+    assert(fputs("new\tpredicate\tvalue\nmalformed\n", malformed) >= 0);
     assert(fclose(malformed) == 0);
     assert(!kg_load(malformed_path));
     assert(kg_query("new", NULL, NULL) == NULL);
