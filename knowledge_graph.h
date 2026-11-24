@@ -6,9 +6,9 @@
 
 int kg_init(void);                    // 0 on success
 bool kg_load(const char* filename);   // true if loaded successfully
-void kg_save(const char* filename);
+int kg_save(const char* filename);        // 0 on success, -1 on failure
 int kg_add(const char* subject, const char* predicate, const char* object);
-char* kg_query(const char* subject, const char* predicate, const char* object);  // returns object or NULL; caller frees?
+char* kg_query(const char* subject, const char* predicate, const char* object);  // caller owns returned string and must free it
 void kg_cleanup(void);
 
 #endif
