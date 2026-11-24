@@ -1,14 +1,13 @@
 #ifndef KNOWLEDGE_GRAPH_H
 #define KNOWLEDGE_GRAPH_H
 
-#include <stdbool.h>
-#include <stddef.h>  // for size_t
+#include <stddef.h>
 
-int kg_init(void);                    // 0 on success
-bool kg_load(const char* filename);   // true if loaded successfully
-int kg_save(const char* filename);        // 0 on success, -1 on failure
-int kg_add(const char* subject, const char* predicate, const char* object);
-char* kg_query(const char* subject, const char* predicate, const char* object);  // caller owns returned string and must free it
+int kg_init(void);
+int kg_load(const char *filename); /* 1 loaded, 0 missing, -1 malformed or I/O error */
+int kg_save(const char *filename); /* 0 on success, -1 on failure */
+int kg_add(const char *subject, const char *predicate, const char *object);
+char *kg_query(const char *subject, const char *predicate, const char *object);
 void kg_cleanup(void);
 
 #endif
