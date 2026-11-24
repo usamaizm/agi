@@ -10,7 +10,7 @@ The repository contains additional experiments for input/output, language, knowl
 
 ## Build and test
 
-Requires a C compiler and Make.
+Requires a C11 compiler, Make, and a POSIX environment for the current getline-based persistence implementation. CI currently verifies the Ubuntu runner's default GCC toolchain.
 
 ```sh
 make
