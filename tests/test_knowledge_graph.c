@@ -29,7 +29,7 @@ int main(void) {
     int state_fd = mkstemp(state_path);
     assert(state_fd >= 0);
     assert(close(state_fd) == 0);
-    kg_save(state_path);
+    assert(kg_save(state_path) == 0);
 
     kg_cleanup();
     kg_cleanup();
