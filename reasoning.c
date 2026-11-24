@@ -1,50 +1,42 @@
 #include "reasoning.h"
-#include "knowledge_graph.h"  // for kg_query, etc.
+#include "knowledge_graph.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int reasoning_step(char** derived, size_t* derived_len) {
-    if (!derived || !derived_len) return -1;
+static char *copy_string(const char *value) {
+    size_t length = strlen(value);
+    char *copy = malloc(length + 1);
+    if (copy) memcpy(copy, value, length + 1);
+    return copy;
+}
 
+int reasoning_step(char **derived, size_t *derived_len) {
+    if (!derived || !derived_len) return -1;
     *derived = NULL;
     *derived_len = 0;
 
-    // Example 1: Check for recent stimulus and echo/reflect it
-    char* stimulus = kg_query("input", "stimulus", NULL);
+    char *stimulus = kg_query("input", "stimulus", NULL);
     if (stimulus) {
-        // Simple derivation: "Observed: [stimulus]"
-        char buf[256];
-        snprintf(buf, sizeof(buf), "Observed and reflected: %s", stimulus);
-        *derived = strdup(buf);
+        const char prefix[] = "Observed and reflected: ";
+        size_t prefix_len = sizeof(prefix) - 1;
+        size_t stimulus_len = strlen(stimulus);
+        if (stimulus_len > SIZE_MAX - prefix_len - 1) {
+            free(stimulus);
+            return -1;
+        }
+        *derived = malloc(prefix_len + stimulus_len + 1);
         if (*derived) {
-            *derived_len = strlen(*derived);
-            free(stimulus);  // if kg_query allocates (as in the earlier KG example)
-            return 0;        // success
+            memcpy(*derived, prefix, prefix_len);
+            memcpy(*derived + prefix_len, stimulus, stimulus_len + 1);
         }
         free(stimulus);
+    } else {
+        *derived = copy_string("No strong signal detected. Exploring cautiously.");
     }
 
-    // Example 2: Check meta strategy and use it
-    char* strategy = kg_query("meta", "strategy", NULL);
-    if (strategy) {
-        char buf[128];
-        snprintf(buf, sizeof(buf), "Applying strategy: %s", strategy);
-        *derived = strdup(buf);
-        if (*derived) {
-            *derived_len = strlen(*derived);
-            free(strategy);
-            return 0;
-        }
-        free(strategy);
-    }
-
-    // Fallback: generic output if nothing found
-    *derived = strdup("No strong signal detected. Exploring randomly.");
-    if (*derived) {
-        *derived_len = strlen(*derived);
-        return 0;
-    }
-
-    return -1;  // allocation failed or no idea
+    if (!*derived) return -1;
+    *derived_len = strlen(*derived);
+    return 0;
 }
