@@ -3,6 +3,8 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
+#include <unistd.h>
 
 int main(void) {
     assert(kg_init() == 0);
@@ -23,8 +25,21 @@ int main(void) {
     assert(value != NULL);
     free(value);
 
+    char state_path[] = "/tmp/agi-kg-test-XXXXXX";
+    int state_fd = mkstemp(state_path);
+    assert(state_fd >= 0);
+    assert(close(state_fd) == 0);
+    kg_save(state_path);
+
     kg_cleanup();
     kg_cleanup();
+    assert(kg_load(state_path));
+    value = kg_query("agent", "status", NULL);
+    assert(value != NULL && strcmp(value, "ready") == 0);
+    free(value);
+    kg_cleanup();
+    assert(unlink(state_path) == 0);
+
     assert(kg_init() == 0);
     kg_cleanup();
     return 0;
