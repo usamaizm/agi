@@ -3,23 +3,25 @@
 This roadmap is provisional. It describes engineering milestones, not a promise that the system will achieve artificial general intelligence.
 
 ## Stage 0 — Establish a reproducible baseline
-- [ ] Identify the canonical build system and supported compiler versions.
-- [ ] Document dependencies and platform support.
-- [ ] Build from a clean checkout.
-- [ ] Record current warnings, failures, and known limitations.
-- [ ] Add automated formatting, static analysis, and test workflows where practical.
+- [x] Establish a canonical Makefile build path targeting C11.
+- [ ] Publish an exact supported compiler-version and platform matrix.
+- [x] Document the initial compiler, Make, and POSIX build requirements.
+- [x] Build from a clean checkout in GitHub Actions.
+- [x] Record the supported prototype's limitations in the README.
+- [x] Add automated CI and focused knowledge-graph tests.
 
 ## Stage 1 — Stabilize module contracts
-- [ ] Document public headers and ownership of shared data.
-- [ ] Define error handling and memory ownership conventions.
+- [x] Document ownership of strings returned by the supported knowledge-graph and reasoning APIs.
+- [ ] Standardize error handling across all modules; the current core still uses mixed return conventions.
 - [ ] Separate interfaces from experimental implementations.
-- [ ] Add focused unit tests for each module.
+- [ ] Add focused unit tests for every module before it enters the supported build.
 
 ## Stage 2 — Establish a reliable core
-- [ ] Define application lifecycle and configuration.
+- [x] Define a bounded application lifecycle and cleanup path for the current prototype.
+- [x] Add explicit persistence error reporting and malformed-state rollback for the knowledge graph.
 - [ ] Add structured logging and diagnostic output.
 - [ ] Define explicit interfaces for model and external-service adapters.
-- [ ] Add deterministic test fixtures and sample inputs.
+- [ ] Expand deterministic test fixtures beyond the knowledge graph.
 
 ## Stage 3 — Integrate capabilities incrementally
 - [ ] Integrate language, knowledge, reasoning, vision, and audio components behind tested interfaces.
