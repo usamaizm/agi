@@ -101,6 +101,7 @@ bool kg_load(const char *filename) {
 
     char *line = NULL;
     size_t line_capacity = 0;
+    size_t starting_count = triple_count;
     bool success = true;
     while (getline(&line, &line_capacity, file) != -1) {
         line[strcspn(line, "\r\n")] = '\0';
@@ -119,6 +120,17 @@ bool kg_load(const char *filename) {
     if (ferror(file)) success = false;
     free(line);
     if (fclose(file) != 0) success = false;
+    if (!success) {
+        while (triple_count > starting_count) {
+            Triple *item = &triples[--triple_count];
+            free(item->subject);
+            free(item->predicate);
+            free(item->object);
+            item->subject = NULL;
+            item->predicate = NULL;
+            item->object = NULL;
+        }
+    }
     return success;
 }
 
